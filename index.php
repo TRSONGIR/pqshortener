@@ -10,8 +10,8 @@ if (isset($_GET['url']) && $_GET['url']!="") {
     $longurl = $_GET['url'];
     $mychars = "0123456789qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM";
     $shortenid = substr(str_shuffle($mychars),5,8);
-    $result = pg_query($con,"INSERT INTO urls (shortenid,longurl) VALUES('$shortenid','$longurl')");
-$result = pg_query($con,"SELECT * FROM urls WHERE longurl='$longurl'");
+    $result = pg_query($con,"INSERT INTO links (shortenid, longurl) VALUES('$shortenid','$longurl');");
+$result = pg_query($con,"SELECT * FROM urls WHERE longurl='$longurl';");  
 if(pg_fetch_row($result)>0){
 $row = pg_fetch_array($result);
 $shortenid = $row['shortenid'];
