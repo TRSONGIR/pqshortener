@@ -10,7 +10,7 @@ if (isset($_GET['url']) && $_GET['url']!="") {
     $longurl = $_GET['url'];
     $shortenid = $_GET['id'];
     $result = pg_query($con,"INSERT INTO urls (shortenid,longurl) VALUES('$shortenid','$longurl');");
-    $result = pg_query($con,"SELECT * FROM urls WHERE longurl='$longurl';");
+    $result = pg_query($con,"SELECT * FROM urls WHERE longurl='$longurl' AND shortenid='$shortenid';");
     if(pg_fetch_row($result)>0){
         $row = pg_fetch_array($result);
         $shortenid = $row['shortenid'];
