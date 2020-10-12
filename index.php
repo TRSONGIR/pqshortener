@@ -14,7 +14,7 @@ if (isset($_GET['url']) && $_GET['url']!="") {
     if(pg_fetch_row($result)>0){
         $row = pg_fetch_array($result);
         $shortenid = $row['shortenid'];
-        response($longurl, $shortenid);
+        response($longurl,$shortenid);
         pg_close($con);
     }else{
         response(NULL, 200);
@@ -24,8 +24,8 @@ if (isset($_GET['url']) && $_GET['url']!="") {
 }
 
 function response($order_id,$amount){
-    $response['longurl'] = $order_id;
-    $response['shortenid'] = $amount;
+    $response['longurl'] = $longurl;
+    $response['shortenid'] = $shortenid;
     $json_response = json_encode($response);
     echo $json_response;
 }
