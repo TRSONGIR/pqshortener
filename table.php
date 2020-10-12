@@ -3,5 +3,7 @@ $con = pg_connect("host=ec2-54-217-213-79.eu-west-1.compute.amazonaws.com port=5
 if(!$con) {
     die('PG Connection Error');
 }
-$a = pg_query($con,"SELECT * FROM urls;");
-echo $a;
+$a = pg_query($con,"CREATE TABLE urls (
+	shortenid VARCHAR ( 50 ),
+	longurl VARCHAR ( 250 )
+);");
