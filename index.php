@@ -14,7 +14,6 @@ if (isset($_GET['url']) && $_GET['url']!="") {
     $result = pg_query($con,"SELECT * FROM urls WHERE longurl='$longurl';");
     if(pg_fetch_row($result)>0){
         $row = pg_fetch_array($result);
-        $shortenid = $row['shortenid'];
         response($longurl,$shortenid);
         pg_close($con);
     }else{
